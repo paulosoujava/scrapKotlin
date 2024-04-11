@@ -58,7 +58,7 @@ fun Games(state: State<Ui>, onClick: () -> Unit) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .background(Color.Black)
-                            .height(125.dp)
+                            .height(85.dp)
                             .padding(10.dp),
                     ) {
 
