@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,6 +34,9 @@ import coil.transform.CircleCropTransformation
 fun CardDadosTime(dadosTime: DadosTime) {
     val painter = rememberAsyncImagePainter(dadosTime.img)
     Card(
+        colors = CardDefaults.cardColors(
+            containerColor = Color.Black
+        ),
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
@@ -51,6 +56,7 @@ fun CardDadosTime(dadosTime: DadosTime) {
                         dadosTime.nome,
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
+                        color = Color.White,
                         textAlign = TextAlign.Start,
 
                     )
@@ -75,18 +81,18 @@ fun CardDadosTime(dadosTime: DadosTime) {
 
             }
             Divider(modifier = Modifier.padding(top = 16.dp, bottom = 16.dp))
-            Text("Pontos: ${dadosTime.pontos}")
-            Text("Jogos: ${dadosTime.jogos}")
-            Text("Vitórias: ${dadosTime.vitorias}")
-            Text("Empates: ${dadosTime.empates}")
-            Text("Derrotas: ${dadosTime.derrotas}")
-            Text("Gols Feitos: ${dadosTime.golsFeitos}")
-            Text("Gols Sofridos: ${dadosTime.golsSofridos}")
-            Text("Saldo de Gols: ${dadosTime.saldoGols}")
-            Text("Cartões Amarelos: ${dadosTime.cartoesAmarelos}")
-            Text("Cartões Vermelhos: ${dadosTime.cartoesVermelhos}")
-            Text("Aproveitamento: ${dadosTime.aproveitamento}")
-            Text("Últimos Resultados:", modifier = Modifier.padding(bottom = 6.dp))
+            Text("Pontos: ${dadosTime.pontos}",color = Color.White)
+            Text("Jogos: ${dadosTime.jogos}",color = Color.White)
+            Text("Vitórias: ${dadosTime.vitorias}",color = Color.White)
+            Text("Empates: ${dadosTime.empates}",color = Color.White)
+            Text("Derrotas: ${dadosTime.derrotas}",color = Color.White)
+            Text("Gols Feitos: ${dadosTime.golsFeitos}",color = Color.White)
+            Text("Gols Sofridos: ${dadosTime.golsSofridos}",color = Color.White)
+            Text("Saldo de Gols: ${dadosTime.saldoGols}",color = Color.White)
+            Text("Cartões Amarelos: ${dadosTime.cartoesAmarelos}",color = Color.White)
+            Text("Cartões Vermelhos: ${dadosTime.cartoesVermelhos}",color = Color.White)
+            Text("Aproveitamento: ${dadosTime.aproveitamento}",color = Color.White)
+            Text("Últimos Resultados:", modifier = Modifier.padding(bottom = 6.dp),color = Color.White)
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier

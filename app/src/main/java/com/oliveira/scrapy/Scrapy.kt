@@ -9,8 +9,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface APICbf {
-    @GET("competicoes/campeonato-brasileiro-serie-a/2023")
-    suspend fun table(): Response<String>
+    @GET("competicoes/campeonato-brasileiro-serie-a/{year}")
+    suspend fun table(@Path("year") year: String ): Response<String>
 
     @GET("competicoes/{path}")
     suspend fun getGames(@Path("path") path: String): Response<String>
@@ -43,16 +43,17 @@ data class DadosTime(
 )
 
 
-suspend fun getAllPosition(): Pair<List<DadosTime>, String> {
+suspend fun getAllPosition(year: String): Pair<List<DadosTime>, String> {
 
     val listaDadosTimes = mutableListOf<DadosTime>()
     var title: String? = null
 
-    val response = connect().table()
+    val response = connect().table(year)
     if (response.isSuccessful && response.body() != null) {
         val htmlDoc = Jsoup.parse(response.body()!!)
-        val metaTag = htmlDoc.select("meta[name=twitter:title]").first()
-        title = metaTag?.attr("content")
+        val metaTag = htmlDoc.select("h2.title.uppercase")
+        title = metaTag.text()
+        print(title)
 
         val rows = htmlDoc.select("tr.expand-trigger")
 
