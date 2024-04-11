@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         BaseEvent.GAMES -> {
-                            Games( state){
+                            Games(state) {
                                 viewModel.back()
                             }
                         }
@@ -89,14 +89,31 @@ class MainActivity : ComponentActivity() {
                                             .height(125.dp)
                                             .padding(10.dp),
                                     ) {
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.SpaceBetween,
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Text(
+                                                text = "Campeonato Brasileirão Séria A  -",
+                                                fontSize = 15.sp,
+                                                color = Color.White,
+                                                modifier = Modifier.padding(5.dp)
+                                            )
+                                            AnoDropdownMenu(
+                                                viewModel = viewModel,
+                                                anos = anos,
+                                                selectedAno = selectedAno
+                                            )
+                                        }
 
-                                        Text(text = state.value.title, fontSize = 18.sp, color = Color.White)
+                                        Spacer(modifier = Modifier.height(10.dp))
                                         Divider()
                                         Row(
                                             modifier = Modifier
                                                 .padding(top = 10.dp)
                                                 .fillMaxWidth(),
-                                            horizontalArrangement = Arrangement.End
+                                            horizontalArrangement = Arrangement.Start
                                         ) {
                                             Button(onClick = {
                                                 viewModel.games(selectedAno.value)
@@ -105,11 +122,7 @@ class MainActivity : ComponentActivity() {
                                                 Text(text = "Rodadas")
                                             }
                                             Spacer(modifier = Modifier.width(10.dp))
-                                            AnoDropdownMenu(
-                                                viewModel = viewModel,
-                                                anos = anos,
-                                                selectedAno = selectedAno
-                                            )
+
                                         }
 
                                     }
@@ -137,7 +150,7 @@ fun AnoDropdownMenu(viewModel: MainViewModel, anos: List<String>, selectedAno: M
         OutlinedButton(
             onClick = { dropdownMenuState.value = true },
         ) {
-            Text(selectedAno.value, color = Color.White, fontSize = 18.sp)
+            Text(selectedAno.value, color = Color.White, fontSize = 14.sp)
         }
 
         DropdownMenu(
